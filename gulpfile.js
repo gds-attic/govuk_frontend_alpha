@@ -157,11 +157,21 @@ gulp.task('build', cb => {
   runSequence('clean', ['build:templates', 'build:styles', 'build:scripts'], cb)
 })
 
-// Package the contents of dist
-gulp.task('package', ['package:tgz'])
-gulp.task('package:tgz', () => {
-  gulp.src(paths.dist + '*')
-    .pipe(tar(packageJson.name + '-' + packageJson.version + '.tar'))
-    .pipe(gzip())
-    .pipe(gulp.dest(paths.distPkg))
+// Build packages
+gulp.task('package', cb => {
+  runSequence('clean', 'build', [
+    'package:npm'
+  ], cb)
+})
+
+// Build NPM package
+gulp.task('package:npm', () => {
+  gulp.src([
+    'package.json',
+    paths.dist + '**/*'
+  ])
+  .pipe(gulp.dest(paths.distPkgNpm))
+  .pipe(tar(packageJson.name + '-' + packageJson.version + '.tar'))
+  .pipe(gzip())
+  .pipe(gulp.dest(paths.distPkgNpm))
 })
