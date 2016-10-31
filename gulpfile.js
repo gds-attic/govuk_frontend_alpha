@@ -212,3 +212,13 @@ gulp.task('package:npm:json', cb => fs.writeFile(paths.npm + 'package.json', bui
 gulp.task('package:npm:build', () => run(`cd ${paths.npm} && npm pack`).exec())
 gulp.task('package:npm:copy', () => gulp.src(`${paths.npm}${packageName}.tgz`).pipe(gulp.dest(paths.pkg)))
 gulp.task('package:npm:clean', () => del(`${paths.npm}${packageName}.tgz`))
+
+// Copy files to /public
+gulp.task('copy', () => {
+  runSequence('build', 'copy:assets')
+})
+
+gulp.task('copy:assets', () => {
+  gulp.src(paths.bundleCss + '**/*').pipe(gulp.dest(paths.publicCss))
+  return gulp.src(paths.bundleJs + '**/*').pipe(gulp.dest(paths.publicJs))
+})

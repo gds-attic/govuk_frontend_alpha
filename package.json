@@ -39,7 +39,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "gulp copy && node server.js",
     "test": "gulp test"
   },
   "standard": {
