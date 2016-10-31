@@ -18,6 +18,12 @@ nunjucks.configure(appViews, {
 
 app.set('view engine', 'html')
 
+// send assetPath to all views
+app.use(function (req, res, next) {
+  res.locals.asset_path = '/public/'
+  next()
+})
+
 app.use('/', routes)
 
 app.listen(3000)
