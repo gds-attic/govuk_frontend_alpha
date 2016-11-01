@@ -46,6 +46,12 @@ gulp.task('clean', () => {
   return del([paths.dist + '*'])
 })
 
+// Copy images
+gulp.task('build:images', () => {
+  return gulp.src(paths.assetsImg + '**/*')
+    .pipe(gulp.dest(paths.bundleImg))
+})
+
 // Task for transpiling the templates
 let transpileRunner = templateLanguage => {
   return gulp.src(paths.templates + '*.html')
@@ -159,7 +165,7 @@ gulp.task('lint:tests', () => {
 
 // Build distribution
 gulp.task('build', cb => {
-  runSequence('clean', ['build:templates', 'build:styles', 'build:scripts'], cb)
+  runSequence('clean', ['build:templates', 'build:images', 'build:styles', 'build:scripts'], cb)
 })
 
 // Package the contents of dist
@@ -173,6 +179,7 @@ gulp.task('package:gem', () => {
 
 gulp.task('package:gem:prepare', () => {
   gulp.src(paths.bundleCss + '**/*').pipe(gulp.dest(paths.gemCss))
+  gulp.src(paths.bundleImg + '**/*').pipe(gulp.dest(paths.gemImg))
   gulp.src(paths.bundleScss + '**/*').pipe(gulp.dest(paths.gemScss))
   gulp.src(paths.bundleJs + '**/*').pipe(gulp.dest(paths.gemJs))
   gulp.src(paths.bundleTemplates + '**/*').pipe(gulp.dest(paths.gemTemplates))
@@ -202,6 +209,7 @@ gulp.task('package:npm', () => {
 
 gulp.task('package:npm:prepare', () => {
   gulp.src(paths.bundleCss + '**/*').pipe(gulp.dest(paths.npmCss))
+  gulp.src(paths.bundleImg + '**/*').pipe(gulp.dest(paths.npmImg))
   gulp.src(paths.bundleScss + '**/*').pipe(gulp.dest(paths.npmScss))
   gulp.src(paths.bundleJs + '**/*').pipe(gulp.dest(paths.npmJs))
   gulp.src(paths.bundleTemplates + '**/*').pipe(gulp.dest(paths.npmTemplates))
