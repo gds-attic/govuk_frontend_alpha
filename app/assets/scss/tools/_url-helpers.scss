@@ -13,9 +13,3 @@
   }
   @return $url;
 }
-
-// If image-url is not defined (if we are not in a Rails environment)
-// Set a path to /public/images (this is used by the GOV.UK elements app)
-@if not(function-exists(image-url)) {
-  $path: "/public/images/";
-}

@@ -41,6 +41,12 @@ $mobile-ie6:          true !default;
 // https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_url-helpers.scss#L3
 $path:                false !default;
 
+// If image-url is not defined (if we are not in a Rails environment)
+// Set a path to /public/images (this is used by the GOV.UK elements app)
+@if not(function-exists(image-url)) {
+  $path: "/public/images/";
+}
+
 // https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_font_stack.scss
 //  GOV.UK font stacks, referred to in typography.scss
 
