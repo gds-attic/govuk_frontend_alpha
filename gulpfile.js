@@ -165,7 +165,7 @@ gulp.task('lint:tests', () => {
 
 // Build distribution
 gulp.task('build', cb => {
-  runSequence('clean', ['build:templates', 'build:images', 'build:styles', 'build:scripts'], cb)
+  runSequence('clean', 'build:templates', 'build:images', 'build:styles', 'build:scripts', cb)
 })
 
 // Package the contents of dist
