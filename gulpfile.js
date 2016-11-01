@@ -43,7 +43,13 @@ gulp.task('help', taskListing.withFilters(null, 'help'))
 
 // Task for cleaning the distribution
 gulp.task('clean', () => {
-  return del([paths.dist + '*'])
+  return del([paths.dist + '*', paths.public + '*'])
+})
+
+// Copy images
+gulp.task('build:images', () => {
+  return gulp.src(paths.assetsImg + '**/*')
+    .pipe(gulp.dest(paths.bundleImg))
 })
 
 // Task for transpiling the templates
@@ -64,7 +70,7 @@ gulp.task('build:styles', cb => {
   runSequence('lint:styles', ['build:styles:copy', 'build:styles:compile'], cb)
 })
 gulp.task('build:styles:compile', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.bundleCss))
     .pipe(rename({ suffix: '.min' }))
@@ -72,7 +78,7 @@ gulp.task('build:styles:compile', () => {
     .pipe(gulp.dest(paths.bundleCss))
 })
 gulp.task('build:styles:copy', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(gulp.dest(paths.bundleScss))
 })
 
@@ -105,7 +111,7 @@ gulp.task('build:scripts:govuk-template', scriptsBuilder.bind(null, 'govuk-templ
 gulp.task('build:scripts:govuk-template-ie', scriptsBuilder.bind(null, 'govuk-template-ie'))
 gulp.task('build:scripts:toolkit', scriptsBuilder.bind(null, 'toolkit'))
 gulp.task('build:scripts:copy', () => {
-  gulp.src(paths.assetsJs + '**/*.js')
+  return gulp.src(paths.assetsJs + '**/*.js')
     .pipe(gulp.dest(paths.bundleJs))
 })
 
@@ -128,7 +134,7 @@ gulp.task('test:toolkit', () => gulp.src([
 // Linting
 gulp.task('lint', ['lint:styles', 'lint:scripts', 'lint:tests'])
 gulp.task('lint:styles', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(sasslint())
     // if the .yml file is in /config, this fails :(
     // .pipe(sasslint({
@@ -138,7 +144,7 @@ gulp.task('lint:styles', () => {
     .pipe(sasslint.failOnError())
 })
 gulp.task('lint:scripts', () => {
-  gulp.src([
+  return gulp.src([
     '!' + paths.assetsJs + '**/vendor/**/*.js',
     paths.assetsJs + '**/*.js'
   ])
@@ -149,7 +155,7 @@ gulp.task('lint:scripts', () => {
     }))
 })
 gulp.task('lint:tests', () => {
-  gulp.src(paths.test + '**/*.js')
+  return gulp.src(paths.test + '**/*.js')
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: true,
@@ -159,12 +165,12 @@ gulp.task('lint:tests', () => {
 
 // Build distribution
 gulp.task('build', cb => {
-  runSequence('clean', ['build:templates', 'build:styles', 'build:scripts'], cb)
+  runSequence('clean', 'build:templates', 'build:images', 'build:styles', 'build:scripts', cb)
 })
 
 // Package the contents of dist
-gulp.task('package', () => {
-  runSequence('build', ['package:gem', 'package:npm'])
+gulp.task('package', cb => {
+  runSequence('build', ['package:gem', 'package:npm'], cb)
 })
 
 gulp.task('package:gem', () => {
@@ -173,6 +179,7 @@ gulp.task('package:gem', () => {
 
 gulp.task('package:gem:prepare', () => {
   gulp.src(paths.bundleCss + '**/*').pipe(gulp.dest(paths.gemCss))
+  gulp.src(paths.bundleImg + '**/*').pipe(gulp.dest(paths.gemImg))
   gulp.src(paths.bundleScss + '**/*').pipe(gulp.dest(paths.gemScss))
   gulp.src(paths.bundleJs + '**/*').pipe(gulp.dest(paths.gemJs))
   gulp.src(paths.bundleTemplates + '**/*').pipe(gulp.dest(paths.gemTemplates))
@@ -202,6 +209,7 @@ gulp.task('package:npm', () => {
 
 gulp.task('package:npm:prepare', () => {
   gulp.src(paths.bundleCss + '**/*').pipe(gulp.dest(paths.npmCss))
+  gulp.src(paths.bundleImg + '**/*').pipe(gulp.dest(paths.npmImg))
   gulp.src(paths.bundleScss + '**/*').pipe(gulp.dest(paths.npmScss))
   gulp.src(paths.bundleJs + '**/*').pipe(gulp.dest(paths.npmJs))
   gulp.src(paths.bundleTemplates + '**/*').pipe(gulp.dest(paths.npmTemplates))
@@ -212,3 +220,23 @@ gulp.task('package:npm:json', cb => fs.writeFile(paths.npm + 'package.json', bui
 gulp.task('package:npm:build', () => run(`cd ${paths.npm} && npm pack`).exec())
 gulp.task('package:npm:copy', () => gulp.src(`${paths.npm}${packageName}.tgz`).pipe(gulp.dest(paths.pkg)))
 gulp.task('package:npm:clean', () => del(`${paths.npm}${packageName}.tgz`))
+
+// Copy files to /public
+gulp.task('preview', cb => {
+  runSequence('build', ['preview:copy:styles', 'preview:copy:images', 'preview:copy:js'], cb)
+})
+
+gulp.task('preview:copy:styles', () => {
+  return gulp.src(paths.bundleCss + '*.css')
+    .pipe(gulp.dest(paths.publicCss))
+})
+
+gulp.task('preview:copy:images', () => {
+  return gulp.src(paths.bundleImg + '**/*')
+    .pipe(gulp.dest(paths.publicImg))
+})
+
+gulp.task('preview:copy:js', () => {
+  return gulp.src(paths.bundleJs + '**/*.js')
+    .pipe(gulp.dest(paths.publicJs))
+})

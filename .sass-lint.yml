@@ -75,8 +75,10 @@ rules:
   force-attribute-nesting:
     - 0
 
-  # TODO: force-element-nesting
+  # Rule force-element-nesting will enforce the nesting of elements
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-element-nesting.md
+  force-element-nesting:
+    - 0
 
   # Rule force-pseudo-nesting will enforce the nesting of pseudo elements/classes.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-pseudo-nesting.md

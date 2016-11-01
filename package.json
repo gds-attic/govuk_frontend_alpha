@@ -13,6 +13,7 @@
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "event-stream": "^3.3.4",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-jasmine-browser": "^1.7.0",
@@ -27,6 +28,7 @@
     "gulp-util": "^3.0.7",
     "jasmine-spec-reporter": "^2.7.0",
     "jquery": "^3.1.1",
+    "nunjucks": "^2.5.2",
     "phantomjs-prebuilt": "^2.1.13",
     "rollup-stream": "^1.14.0",
     "run-sequence": "^1.2.2",
@@ -37,6 +39,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
+    "start": "gulp preview && node server.js",
     "test": "gulp test"
   },
   "standard": {

@@ -10,7 +10,8 @@
 
 // This style of indentation is preferred as it is easier to scan
 // Allow more than two spaces per indentation level and don't require a space after a colon
-// sass-lint:disable Indentation SpaceAfterPropertyColon
+
+// sass-lint:disable indentation no-duplicate-properties quotes
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius; // Chrome 4.0, Safari 3.1 to 4.0, Mobile Safari 3.2, Android Browser 2.1
@@ -88,3 +89,5 @@
   filter: unquote('alpha(opacity=' + ($trans * 100) + ')'); // IE6 to IE8
   opacity: $trans;
 }
+
+// sass-lint:enable indentation no-duplicate-properties quotes
