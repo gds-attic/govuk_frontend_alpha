@@ -64,7 +64,7 @@ gulp.task('build:styles', cb => {
   runSequence('lint:styles', ['build:styles:copy', 'build:styles:compile'], cb)
 })
 gulp.task('build:styles:compile', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.bundleCss))
     .pipe(rename({ suffix: '.min' }))
@@ -72,7 +72,7 @@ gulp.task('build:styles:compile', () => {
     .pipe(gulp.dest(paths.bundleCss))
 })
 gulp.task('build:styles:copy', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(gulp.dest(paths.bundleScss))
 })
 
@@ -105,7 +105,7 @@ gulp.task('build:scripts:govuk-template', scriptsBuilder.bind(null, 'govuk-templ
 gulp.task('build:scripts:govuk-template-ie', scriptsBuilder.bind(null, 'govuk-template-ie'))
 gulp.task('build:scripts:toolkit', scriptsBuilder.bind(null, 'toolkit'))
 gulp.task('build:scripts:copy', () => {
-  gulp.src(paths.assetsJs + '**/*.js')
+  return gulp.src(paths.assetsJs + '**/*.js')
     .pipe(gulp.dest(paths.bundleJs))
 })
 
@@ -128,7 +128,7 @@ gulp.task('test:toolkit', () => gulp.src([
 // Linting
 gulp.task('lint', ['lint:styles', 'lint:scripts', 'lint:tests'])
 gulp.task('lint:styles', () => {
-  gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.assetsScss + '**/*.scss')
     .pipe(sasslint())
     // if the .yml file is in /config, this fails :(
     // .pipe(sasslint({
@@ -138,7 +138,7 @@ gulp.task('lint:styles', () => {
     .pipe(sasslint.failOnError())
 })
 gulp.task('lint:scripts', () => {
-  gulp.src([
+  return gulp.src([
     '!' + paths.assetsJs + '**/vendor/**/*.js',
     paths.assetsJs + '**/*.js'
   ])
@@ -149,7 +149,7 @@ gulp.task('lint:scripts', () => {
     }))
 })
 gulp.task('lint:tests', () => {
-  gulp.src(paths.test + '**/*.js')
+  return gulp.src(paths.test + '**/*.js')
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: true,
@@ -163,8 +163,8 @@ gulp.task('build', cb => {
 })
 
 // Package the contents of dist
-gulp.task('package', () => {
-  runSequence('build', ['package:gem', 'package:npm'])
+gulp.task('package', cb => {
+  runSequence('build', ['package:gem', 'package:npm'], cb)
 })
 
 gulp.task('package:gem', () => {
