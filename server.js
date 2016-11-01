@@ -9,6 +9,7 @@ var appViews = [
   path.join(__dirname, '/app/templates/')
 ]
 
+// Configure Nunjucks
 nunjucks.configure(appViews, {
   autoescape: true,
   express: app,
@@ -16,7 +17,11 @@ nunjucks.configure(appViews, {
   watch: true
 })
 
+// Set views engine
 app.set('view engine', 'html')
+
+// Middleware to serve static assets
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
 // send assetPath to all views
 app.use(function (req, res, next) {
