@@ -46,15 +46,15 @@
 
   color: $black;
 
+  text-decoration: none;
+  border-bottom: 1px solid $black;
+
   &:link,
   &:visited,
   &:hover,
   &:active {
     color: $black;
   }
-
-  text-decoration: none;
-  border-bottom: 1px solid $black;
 
   // Back arrow - left pointing black arrow
   &::before {

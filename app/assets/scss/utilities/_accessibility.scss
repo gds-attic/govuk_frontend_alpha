@@ -1,4 +1,4 @@
-/* For image replacement */
+// For image replacement
 .ir {
   display: block;
   text-indent: -999em;
@@ -12,15 +12,15 @@
   }
 }
 
-/* Hide for both screenreaders and browsers */
+// Hide for both screenreaders and browsers
 .hidden,
-/* Hide for both screenreaders and browsers when JS enabled */
+// Hide for both screenreaders and browsers when JS enabled
 .js-enabled .js-hidden {
   display: none;
   visibility: hidden;
 }
 
-/* Hide only visually, but have it available for screenreaders */
+// Hide only visually, but have it available for screenreaders
 .visually-hidden,
 .visuallyhidden {
   position: absolute;
@@ -30,10 +30,8 @@
   height: 1px;
   overflow: hidden;
 
-  /*
-   * Extends the .visuallyhidden class to allow the element to be
-   * focusable when navigated to via the keyboard
-   */
+  // Extends the .visuallyhidden class to allow the element to be
+  // focusable when navigated to via the keyboard
   &.focusable:active,
   &.focusable:focus {
     clip: auto;
@@ -45,22 +43,12 @@
   }
 }
 
-/* Hide visually and from screenreaders, but maintain layout */
+// Hide visually and from screenreaders, but maintain layout
 .invisible {
   visibility: hidden;
 }
 
-/* Give a strong clear visual idea as to what is currently in focus */
-a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
-}
-
-a:focus {
-  background-color: $focus-colour;
-  outline: 3px solid $focus-colour;
-}
-
-/* Make skiplinks visible when they are tabbed to */
+// Make skiplinks visible when they are tabbed to
 
 .skiplink {
   position: absolute;
@@ -72,6 +60,7 @@ a:focus {
   z-index: 1;
 }
 
+// sass-lint:disable no-ids
 #skiplink-container {
   text-align: center;
   background: $black;
@@ -95,3 +84,4 @@ button:focus,
 #global-header input:focus {
   outline: 3px solid $focus-colour;
 }
+// sass-lint:enable no-ids

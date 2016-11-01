@@ -91,11 +91,11 @@
     text-rendering: optimizeLegibility;
     border-bottom: 1px solid transparent;
 
-    background: file-url('template/gov.uk_logotype_crown.png') no-repeat;
+    background: file-url("template/gov.uk_logotype_crown.png") no-repeat;
     background-size: 36px 32px;
     background-position: 0 0;
     @include ie-lte(8) {
-      background-image: file-url('template/gov.uk_logotype_crown-1x.png');
+      background-image: file-url("template/gov.uk_logotype_crown-1x.png");
     }
 
     img {
@@ -110,17 +110,21 @@
       border-bottom-color: $white;
     }
   }
+
   .header-proposition {
     padding-top: 10px;
-    @include media(desktop){
+    @include media(desktop) {
       padding-top: 0;
     }
+
     #proposition-name {
       @include core-24;
       font-weight: bold;
       color: $white;
       text-decoration: none;
     }
+
+    // sass-lint:disable force-element-nesting no-qualifying-elements
     a#proposition-name:hover {
       text-decoration: underline;
     }
@@ -149,10 +153,13 @@
         vertical-align: middle;
         content: " \25BC";
       }
+
       &.js-hidden::after {
         content: " \25B2";
       }
+
     }
+
     #proposition-menu {
       margin-top: 5px;
 
@@ -164,6 +171,7 @@
         }
       }
     }
+
     #proposition-link,
     #proposition-links {
       clear: both;
@@ -176,6 +184,7 @@
         @include media(desktop) {
           display: block;
         }
+
         &.js-visible {
           display: block;
         }
@@ -212,9 +221,11 @@
         &:hover {
           text-decoration: underline;
         }
+
         &.active {
           color: $proposition-active-nav;
         }
+
         &:focus {
           color: $black;
         }
@@ -242,6 +253,7 @@
   @include o-wrapper;
   height: 10px;
   background-color: $govuk-blue;
+
   @include ie-lte(8) {
     font-size: 0;
   }

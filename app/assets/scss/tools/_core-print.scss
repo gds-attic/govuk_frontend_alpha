@@ -1,11 +1,14 @@
-/* Global print stylesheet */
+// Global print stylesheet
 
-/* reset everything */
+// reset everything
+
+
+
 * {
   background: transparent;
-  color: black;
+  color: $black;
   text-shadow: none;
-  filter:none;
+  filter: none;
   -ms-filter: none;
 }
 
@@ -16,34 +19,36 @@ body {
   width: 100%;
 }
 
-a, a:visited {
+a,
+a:visited {
   word-wrap: break-word;
 }
 
-a[href^="/"]:after,
-a[href^="http://"]:after,
-a[href^="https://"]:after {
+a[href^="/"]::after,
+a[href^="http://"]::after,
+a[href^="https://"]::after {
   content: " (" attr(href) ")";
   font-size: 90%;
 }
 
-a[href^="javascript:"]:after,
-a[href^="#"]:after {
-    content: "";
+a[href^="javascript:"]::after,
+a[href^="#"]::after {
+  content: "";
 }
 
 img { max-width: 100% !important; }
 
-select { background: white; }
+select { background: $white; }
 
+// sass-lint:disable no-ids
 #global-header {
   margin: 3px 0 1em; // 3px additional space at top for countering -3px re-positioning of #logo img
 
   #logo {
     @include bold-48;
     font-size: 28pt;
-    /* `bold-80` can be used instead when govuk_frontend_toolkit gem is >= 4.18.2,
-       see https://github.com/alphagov/govuk_frontend_toolkit/pull/328 */
+    //`bold-80` can be used instead when govuk_frontend_toolkit gem is >= 4.18.2,
+    // see https://github.com/alphagov/govuk_frontend_toolkit/pull/328 */
     text-rendering: optimizeLegibility;
 
     img {
@@ -56,13 +61,15 @@ select { background: white; }
   }
 
   .content {
-    margin: 0!important;
+    margin: 0 !important;
   }
 
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: none;
   }
-  a:after {
+
+  a::after {
     content: "";
   }
 
@@ -73,10 +80,11 @@ select { background: white; }
 
 }
 
-/* hide the unnecessary page elements */
+// hide the unnecessary page elements
 body footer,
 .visuallyhidden,
 #global-cookie-message,
 #skiplink-container {
   display: none !important;
 }
+// sass-lint:enable no-ids
