@@ -9,6 +9,8 @@
 
   .footer-wrapper {
     @include clearfix;
+    @include o-wrapper;
+
     background-color: $footer-background;
     padding-top: 20px;
 
