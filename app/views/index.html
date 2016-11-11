@@ -2,6 +2,21 @@
 
 {% block content %}
   <main class="gv-o-wrapper">
-    test index content
+    {% import "../components/button.nunjucks" as button %}
+
+    <div class="govuk-u-mb-10">
+    {{ button.buttonComponent(class=buttonData.context.class, type=buttonData.context.type, text=buttonData.context.text) }}
+    </div>
+
+    <div class="govuk-u-mb-10">
+    {{ button.buttonComponent(class=buttonPrimaryData.context.class, type=buttonPrimaryData.context.type, text=buttonPrimaryData.context.text) }}
+    </div>
+
+    {% import "../components/form-control.nunjucks" as formControl %}
+
+    <div class="govuk-u-mb-10">
+    {{ formControl.formControlComponent(class=formControlData.context.class) }}
+    </div>
+
   </main>
 {% endblock %}
