@@ -33,7 +33,10 @@ app.use(function (req, res, next) {
 
 // Render views/index
 app.get('/', function (req, res) {
-  res.render('index')
+  let buttonData = require('./app/data/button.js')
+  let buttonPrimaryData = require('./app/data/button-primary.js')
+  let formGroupData = require('./app/data/form-group.js')
+  res.render('index', { buttonData: buttonData, buttonPrimaryData: buttonPrimaryData, formGroupData: formGroupData })
 })
 
 // Log when app is running

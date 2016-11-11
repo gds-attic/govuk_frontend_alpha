@@ -12,10 +12,10 @@
     {{ button.buttonComponent(class=buttonPrimaryData.context.class, type=buttonPrimaryData.context.type, text=buttonPrimaryData.context.text) }}
     </div>
 
-    {% import "../components/form-control.nunjucks" as formControl %}
+    {% import "../components/form-group.nunjucks" as formGroup %}
 
     <div class="govuk-u-mb-10">
-    {{ formControl.formControlComponent(class=formControlData.context.class) }}
+    {{ formGroup.formGroupComponent(class=formGroupData.context.class, class=formGroupData.context.labelText) }}
     </div>
 
   </main>
