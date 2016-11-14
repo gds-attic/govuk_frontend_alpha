@@ -1,0 +1,5 @@
+{% macro buttonComponent(class="gv-c-button", text="", type="") %}
+  <button class="{{ class }}" type="{{ type }}">
+    {{ text }}
+  </button>
+{% endmacro %}

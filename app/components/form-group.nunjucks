@@ -1,0 +1,6 @@
+{% macro formControlComponent(class="") %}
+  <div class="{{ class }}">
+    <label class="gv-c-form-group__label" for="">{{ labelText }}</label>
+    <input class="gv-c-form-group__control" id="">
+  </div>
+{% endmacro %}
