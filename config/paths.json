@@ -1,23 +1,38 @@
 {
   "config": "config/",
+  
   "app": "app",
   "appComponents": "app/components/",
   "appDocs": "app/docs/",
+ 
   "assetsImg": "app/assets/images/",
   "assetsJs": "app/assets/js/",
   "assetsScss": "app/assets/scss/",
+ 
   "templates": "app/templates/",
   "views": "app/views/",
   "components": "app/components/",
+  "test": "test/",
+  "testSpecs": "test/specs/",
+  
+  "lib": "lib/",
+
   "dist": "dist/",
+  "pkg": "dist/pkg/",
   "bundle": "dist/bundle/",
+
   "bundleImg": "dist/bundle/assets/img/",
   "bundleCss": "dist/bundle/assets/css/",
   "bundleScss": "dist/bundle/assets/scss/",
   "bundleJs": "dist/bundle/assets/js/",
+  "bundleNpmGovukTasks": "dist/bundle/tasks/npm",
   "bundleTemplates": "dist/bundle/templates/",
   "bundleViews": "dist/bundle/views/",
   "bundleComponents": "dist/bundle/components/",
+  "bundleNpmTasks": "dist/bundle/tasks/npm/",
+  "bundleNpmPaths": "dist/bundle/paths.json",
+
+
   "gem": "dist/gem/",
   "gemLib": "dist/gem/lib",
   "gemConfig": "dist/gem/config",
@@ -27,7 +42,13 @@
   "gemJs": "dist/gem/app/assets/javascripts/",
   "gemTemplates": "dist/gem/app/views/layouts/",
   "gemViews": "dist/gem/app/views/",
+
+  "nodeModules": "node_modules/",
+
+  "npmPackageJson" : "package.json",
   "npm": "dist/npm/",
+  "npmConfig": "dist/npm/config",
+  "npmFractal": "lib/tasks/fractal.js",
   "npmCss": "dist/npm/assets/stylesheets/",
   "npmImg": "dist/npm/assets/images/",
   "npmScss": "dist/npm/assets/scss/",
@@ -35,13 +56,13 @@
   "npmTemplates": "dist/npm/templates/",
   "npmViews": "dist/npm/views/",
   "npmComponents": "dist/npm/components/",
+  "npmTasks": "dist/npm/tasks/npm",
+
+  "paths": "config/paths.json",
+
   "public": "public/",
   "publicImg": "public/images/",
   "publicCss": "public/stylesheets/",
-  "publicJs": "public/javascripts/",
-  "pkg": "dist/pkg/",
-  "nodeModules": "node_modules/",
-  "test": "test/",
-  "testSpecs": "test/specs/",
-  "lib": "lib/"
+  "publicJs": "public/javascripts/"
+  
 }

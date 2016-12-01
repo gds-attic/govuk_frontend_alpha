@@ -13,15 +13,9 @@ const runSequence = require('run-sequence')
 const taskListing = require('gulp-task-listing')
 
 // Gulp sub-tasks
-require('./lib/tasks/build-templates.js')
-require('./lib/tasks/build-views.js')
-require('./lib/tasks/build-components.js')
-require('./lib/tasks/build-images.js')
-require('./lib/tasks/build-styles.js')
-require('./lib/tasks/build-scripts.js')
+require('./lib/tasks/build')
+require('./lib/tasks/package')
 
-require('./lib/tasks/package-npm.js')
-require('./lib/tasks/package-gem.js')
 
 require('./lib/tasks/lint.js')
 require('./lib/tasks/test.js')
@@ -38,10 +32,10 @@ gulp.task('help', taskListing.withFilters(null, 'help'))
 // Task for cleaning the distribution
 gulp.task('clean', () => del([paths.dist + '*', paths.public + '*']))
 
-// Build distribution
-// This runs the build task to build the assets from app to dist/bundle
-gulp.task('build', cb => {
-  runSequence('clean', ['build:templates', 'build:components','build:views', 'build:images', 'build:styles', 'build:scripts'], cb)
+
+// Package the contents of dist
+gulp.task('package', cb => {
+  runSequence('build', ['package:gem', 'package:npm'], cb)
 })
 
 // Linting
@@ -53,10 +47,7 @@ gulp.task('test', cb => {
   runSequence('lint', 'test:lib', 'test:toolkit', 'build', 'test:preview', cb)
 })
 
-// Package the contents of dist
-gulp.task('package', cb => {
-  runSequence('build', ['package:gem', 'package:npm'], cb)
-})
+
 
 // Preview
 // This runs the build task first, watches and starts the server
@@ -64,8 +55,4 @@ gulp.task('preview', cb => {
   runSequence('build', 'start:server', ['browser-sync', 'watch'], cb)
 })
 
-// Fractal
-// This runs the build task first, then starts Fractal
-gulp.task('fractal', cb => {
-  runSequence('build', ['fractal:start'], cb)
-})
+
