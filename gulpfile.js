@@ -18,6 +18,8 @@ require('./lib/tasks/build-components.js')
 require('./lib/tasks/build-images.js')
 require('./lib/tasks/build-styles.js')
 require('./lib/tasks/build-scripts.js')
+require('./lib/tasks/build-npm-assets.js')
+require('./lib/tasks/build-tasks.js')
 
 require('./lib/tasks/package-npm.js')
 require('./lib/tasks/package-gem.js')
@@ -40,7 +42,15 @@ gulp.task('clean', () => del([paths.dist + '*', paths.public + '*']))
 // Build distribution
 // This runs the build task to build the assets from app to dist/bundle
 gulp.task('build', cb => {
-  runSequence('clean', ['build:templates', 'build:components', 'build:images', 'build:styles', 'build:scripts'], cb)
+  runSequence('clean', [
+    'build:templates',
+    'build:components',
+    'build:images',
+    'build:styles',
+    'build:scripts',
+    'build:npm-assets',
+    'build:tasks'
+  ], cb)
 })
 
 // Linting
@@ -63,8 +73,3 @@ gulp.task('preview', cb => {
   runSequence('build', 'start:server', ['browser-sync', 'watch'], cb)
 })
 
-// Fractal
-// This runs the build task first, then starts Fractal
-gulp.task('fractal', cb => {
-  runSequence('build', ['fractal:start'], cb)
-})
