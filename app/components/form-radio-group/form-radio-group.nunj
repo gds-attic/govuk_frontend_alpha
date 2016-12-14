@@ -12,7 +12,7 @@
     </legend>
 
     {% for radio in radioGroup %}
-      <label class="gv-c-form-custom" for="{{radio.id}}">
+      <label class="gv-c-form-custom selection-button-radio" for="{{radio.id}}">
         <input class="gv-c-form-custom__control"
                id="{{radio.id}}"
                type="radio"
