@@ -1,0 +1,16 @@
+---
+title: Select boxes
+---
+
+Avoid using select boxes (drop-down lists) - use radio buttons or checkboxes instead.
+
+```html
+<div class="form-group">
+  <label class="form-label" for="select-box">This is the label text</label>
+  <select class="form-control" id="select-box">
+    <option>GOV.UK elements option 1</option>
+    <option>GOV.UK elements option 2</option>
+    <option>GOV.UK elements option 3</option>
+  </select>
+</div>
+```

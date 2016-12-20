@@ -1,7 +1,8 @@
-
-# Buttons
-
-## Use buttons to move though a transaction, aim to use only one button per page.
+---
+title: Buttons
+context:
+  lede: Use buttons to move though a transaction, aim to use only one button per page.
+---
 
 ### Button text
 
