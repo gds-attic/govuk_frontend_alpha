@@ -2,6 +2,11 @@ module.exports = {
   title: 'Form radio group',
   status: 'wip',
   context: {
+    setup: {
+      initScript: 'var $blockLabels = $(".gv-c-form-custom input[type=\'radio\'], .gv-c-form-custom input[type=\'checkbox\']"); new GOVUK.SelectionButtons($blockLabels);',
+      openWrapper: '<form>',
+      closeWrapper: '</form>'
+    },
     id: 'contact',
     name: 'contact-group',
     legend: 'How do you want to be contacted?',

@@ -1,19 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-    <meta charset="utf-8">
-    <link media="all" rel="stylesheet" href="{{ '/stylesheets/govuk-frontend.css' | path }}">
-    <title>Preview Layout</title>
-    <style>
-      html {
-        background-color: white;
-      }
-    </style>
+  <meta charset="utf-8">
+  <link media="all" rel="stylesheet" href="{{ '/stylesheets/govuk-frontend.css' | path }}">
+  <link rel="shortcut icon" href="{{ '/images/template/favicon.ico' | path }}" type="image/ico">
+  <title>{{ _target.title }} &#9670; GOV.UK Frontend Alpha</title>
+  <script>
+  // govuk_template sets js-enabled
+  // we're not loading the template as a wrapper for components, so this class must be set in the preview template
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js-enabled');
+  </script>
+  <style>
+    html {
+      background-color: white;
+    }
+  </style>
 </head>
 <body>
+  {% if _target.context.setup.openWrapper %}
+    {{ _target.context.setup.openWrapper }}
+  {% endif %}
+
   {{ yield }}
+
+  {{ _target.title }}
+  {{ _target.status }}
+  {{ _target.context.id }}
+  {{ _target.context.setup }}
+
+  {% if _target.context.setup.closeWrapper %}
+    {{ _target.context.setup.closeWrapper }}
+  {% endif %}
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{{ '/javascripts/govuk-template.min.js' | path }}"></script>
 <script src="{{ '/javascripts/toolkit.min.js' | path }}"></script>
 <script src="{{ '/javascripts/elements.min.js' | path }}"></script>
+<!-- TODO: Fix how this works, for now, initialise component js by updating initScript in the component's config file -->
+{% if _target.context.setup.initScript %}
+  <script>
+    {{ _target.context.setup.initScript }}
+  </script>
+{% endif %}
 </html>
