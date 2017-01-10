@@ -19,6 +19,7 @@
   "fractal": "lib/fractal",
   "fractalThemeCss": "lib/fractal/govuk-theme/assets/css/",
   "fractalThemeScss": "lib/fractal/govuk-theme/assets/scss/",
+  "fractalThemeImages": "lib/fractal/govuk-theme/assets/images/",
   "fractalThemeViews": "lib/fractal/govuk-theme/views/",
   "gem": "dist/gem/",
   "gemLib": "dist/gem/lib",
