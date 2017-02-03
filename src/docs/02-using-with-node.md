@@ -2,9 +2,11 @@
 
 ## Add govuk_frontend_alpha to your application
 
-The package is not available on the NPM registry.
+```bash
+npm install govuk_frontend_alpha
+```
 
-You will need to manually include it as a dependency.
+> ❗️ __Alpha Note:__ *`govuk_frontend_alpha` isn't available on the NPM registry. You'll need to install it manually (see below).
 
 ## Amend package.json
 
@@ -16,17 +18,15 @@ Add this line to your dependencies in `package.json`:
 
 ## Install the govuk_frontend_alpha dependency
 
-If you're using [NPM](https://www.npmjs.com/):
-
 ```bash
 npm install
 ```
 
 ## Use the GOV.UK layout
 
-Create a file `layout.njk` in `views`, use this file to extend the GOV.UK template.
+Create a file `index.njk` in `views`, use this file to extend the GOV.UK template.
 
-In `views/layout.njk` add:
+In `views/index.njk` add:
 
 ```nunjucks
 {% raw %}
@@ -34,18 +34,23 @@ In `views/layout.njk` add:
 {% endraw %}
 ```
 
-If you are using the starter application, this layout file is created already. 
-Replace the text **'Layout template'** with the above.
+You'll need to configure your application to find this template.
+
+In server.js, add this line to your application's views:
+
+```
+path.join(__dirname, '/node_modules/govuk_frontend_alpha/templates/')
+```
 
 Start your app using `npm start`
 
 Go to http://localhost:3000, you should see the familiar GOV.UK brand, with the text "Hello world!".
 
-### Customise the layout
+## Customise the template
 
-GOV.UK Frontend has [template blocks](https://mozilla.github.io/nunjucks/templating.html#block) that you can use to override bits of the layout.
+GOV.UK Frontend has [template blocks](/docs/template-blocks/) that you can use to override bits of the layout.
 
-[The starter app provides a template block 'content'](https://github.com/alphagov/govuk-frontend-alpha-starter-kit-node/blob/master/views/index.njk#L3), in `index.njk` as an example.
+### Add content
 
 ```nunjucks
 {% raw %}
@@ -54,6 +59,8 @@ GOV.UK Frontend has [template blocks](https://mozilla.github.io/nunjucks/templat
 {% endblock %}
 {% endraw %}
 ```
+
+### Change the page title
 
 To set the `page_title` block, in `index.njk` add:
 
@@ -65,8 +72,16 @@ To set the `page_title` block, in `index.njk` add:
 {% endraw %}
 ```
 
-There are [many other blocks](template-blocks.md) you can use if you need to.
+## Configure paths for static assets
 
+You'll need to configure the paths to static assets, to server the the govuk_frontend_alpha assets from the node_modules directory.
+
+In server.js add:
+
+```
+app.use('/public', express.static(path.join(__dirname, '/node_modules/govuk_frontend_alpha/assets/')))
+app.use('/images/template', express.static(path.join(__dirname, '/node_modules/govuk_frontend_alpha/assets/images/template/')))
+```
 
 ## Importing the govuk-frontend SCSS files
 
@@ -130,7 +145,7 @@ Fix this by configuring includePaths for gulp-sass, in your gulpfile.js:
 
 ## Before using a component
 
-In your index template, add this line underneath `{% raw %}{% extends "layout.njk" %}{% endraw %}` to import all components:
+In your index template, add this line underneath `{% raw %}{% extends "govuk_template.njk" %}{% endraw %}` to import all components:
 
 ```nunjucks
 {% raw %}
@@ -142,9 +157,17 @@ Your index template, `views/index.njk` should now look like this:
 
 ```nunjucks
 {% raw %}
-{% extends "layout.njk" %}
+{% extends "govuk_template.njk" %}
 {% import "components.njk" as govuk %}
 {% endraw %}
+```
+
+You'll need to configure your application to find the components.
+
+In server.js, add this line to your application's views:
+
+```
+path.join(__dirname, '/node_modules/govuk_frontend_alpha/components/')
 ```
 
 ## Use a component in your application

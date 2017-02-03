@@ -1,5 +1,3 @@
-# Using with Rails
-
 ## Installing `govuk_frontend`
 
 Add this to your `Gemfile`:
