@@ -34,8 +34,13 @@ In `views/layout.njk` add:
 {% endraw %}
 ```
 
-If you are using the starter application, this layout file is created already. 
-Replace the text **'Layout template'** with the above.
+You'll need to configure your application to find this template.
+
+In server.js, add this line to your application's views:
+
+```
+path.join(__dirname, '/node_modules/govuk_frontend_alpha/templates/')
+```
 
 Start your app using `npm start`
 
@@ -63,6 +68,17 @@ GOV.UK Frontend has [template blocks](/docs/template-blocks) that you can use to
   My page title
 {% endblock %}
 {% endraw %}
+```
+
+## Configure paths for static assets
+
+You'll need to configure the paths to static assets, to server the the govuk_frontend_alpha assets from the node_modules directory.
+
+In server.js add:
+
+```
+app.use('/public', express.static(path.join(__dirname, '/node_modules/govuk_frontend_alpha/assets/')))
+app.use('/images/template', express.static(path.join(__dirname, '/node_modules/govuk_frontend_alpha/assets/images/template/')))
 ```
 
 ## Importing the govuk-frontend SCSS files
@@ -142,6 +158,14 @@ Your index template, `views/index.njk` should now look like this:
 {% extends "layout.njk" %}
 {% import "components.njk" as govuk %}
 {% endraw %}
+```
+
+You'll need to configure your application to find the components.
+
+In server.js, add this line to your application's views:
+
+```
+path.join(__dirname, '/node_modules/govuk_frontend_alpha/components/')
 ```
 
 ## Use a component in your application
