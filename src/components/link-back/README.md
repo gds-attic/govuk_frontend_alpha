@@ -17,3 +17,10 @@ Back links should go to the user's actual previous page, not some pre-determined
 
 ## Position back links at the top of the page
 This is consistent with the positioning of back buttons on browsers. It means users will immediately see that they can go back if they need to. It also means they'll be less likely to enter data on the current page, then hit 'back' and lose that data.
+
+## Link back arguments
+
+| Name        | Purpose                                           | Type | Default | Required               |
+|-------------|---------------------------------------------------|------|---------|------------------------|
+| link        | The value of the link href attribute              | text | N/A     | Yes                    |
+| text        | The link text                                     | text | Back    | Yes                    |
