@@ -3,7 +3,7 @@ node_js:
 - 6.6.0
 sudo: false
 script:
-- yarn test
+- yarn test && yarn check --integrity
 notifications:
   email: false
 deploy:
