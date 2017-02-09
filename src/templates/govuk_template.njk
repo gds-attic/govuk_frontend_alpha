@@ -24,7 +24,7 @@
     {% block head %}{% endblock %}
   </head>
 
-  <body class="{% block body_classes %}{% endblock %}">
+  <body class="{% block body_classes %}{% endblock %}" {% block body_attributes %}{% endblock %}>
     <!--[if gte IE 8]><!--><script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script></script><!--<![endif]-->
 
     {% block body_start %}{% endblock %}
