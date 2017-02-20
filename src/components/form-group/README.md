@@ -30,3 +30,15 @@ don’t mark mandatory fields with asterisks
 
 {{ '@form-group--has-hint'|preview(120) }}
 
+## Arguments
+
+| Name                   | Purpose | Type | Default | Required |
+|------------------------|---------|------|---------|----------|
+| id                     |         |      |         |          |
+| name                   |         |      |         |          |
+| legend                 |         |      |         |          |
+| hint                   |         |      |         |          |
+| error                  |         |      |         |          |
+| day                    |         |      |         |          |
+| month                  |         |      |         |          |
+| year                   |         |      |         |          |

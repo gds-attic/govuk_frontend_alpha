@@ -13,7 +13,7 @@ Align the primary action button to the left edge of your form, in the user’s l
 - an example of a useful disabled option is a calendar with greyed out days where no bookings are available
 - provide another way for the user to continue, add an error message or text to explain why the button is disabled
 
-## Button arguments
+## Arguments
 
 | Name    | Purpose                                              | Type    | Default                                | Required |
 |---------|------------------------------------------------------|---------|----------------------------------------|----------|

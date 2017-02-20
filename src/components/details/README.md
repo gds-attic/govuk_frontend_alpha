@@ -10,7 +10,7 @@ This component uses the [HTML5 details and summary elements](http://html5doctor.
 
 These elements are only supported by a few modern browsers at the moment so you’ll need a JavaScript polyfill to make them work in other browsers. 
 
-## Details arguments
+## Arguments
 
 | Name        | Purpose                                          | Type | Default | Required               |
 |-------------|--------------------------------------------------|------|---------|------------------------|

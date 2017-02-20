@@ -2,7 +2,7 @@ Breadcrumb navigation, showing page hierarchy.
 
 {{ '@breadcrumbs'|preview(70) }}
 
-Breadcrumbs arguments
+## Arguments
 
 | Name  | Purpose                                                        | Type  | Default | Required |
 |-------|----------------------------------------------------------------|-------|---------|----------|
