@@ -13,15 +13,9 @@ A single package containing everything needed to start building a GOV.UK service
 
 You’re building a service that will live on GOV.UK. This will give your service consistency with the rest of GOV.UK and give you access to our latest patterns and guidance. It will also make it easy to update your service to match changes to the core site.
 
-## Installation instructions
+## Using GOV.UK Frontend
 
-### Node
-
-[Installation instructions](docs/using-with-node.md).
-
-### Rails
-
-[Installation instructions](docs/using-with-rails.md).
+[Using the templates](docs/templates.md) has instructions for using GOV.UK Frontend with the Express, Ruby on Rails and Django frameworks.
 
 ## Contributing
 
