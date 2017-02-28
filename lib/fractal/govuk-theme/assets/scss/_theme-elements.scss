@@ -1,0 +1,284 @@
+// Mixins
+// ==========================================================================
+
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  @include ie-lte(7) {
+    zoom: 1;
+  }
+}
+
+
+// Typography
+// ==========================================================================
+.lede {
+  @include core-24;
+}
+
+
+// Example boxes
+// ==========================================================================
+
+.example {
+  @extend %contain-floats;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $grey-2;
+  margin-top: $gutter-half;
+  margin-bottom: $gutter-half;
+
+  padding-top: $gutter;
+  padding-right: $gutter-half;
+  padding-bottom: $gutter-half;
+  padding-left: $gutter-half;
+
+  @include media(tablet) {
+    padding-top: $gutter*1.5;
+    padding-right: $gutter;
+    padding-bottom: $gutter;
+    padding-left: $gutter;
+  }
+}
+
+.example-preview {
+  position: relative;
+}
+
+.example:before,
+.example-preview:before {
+  content: "EXAMPLE";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 5px 15px 5px 15px;
+  @include core-14;
+  background: $grey-2;
+  color: white;
+}
+
+// Example boxes - Layout - Spacing
+// ==========================================================================
+.example--spacing img {
+  float: left;
+  width: 50%;
+}
+
+// Example boxes - Layout - Grid
+// ==========================================================================
+.example--grid {
+
+  // Copy grid styles here (scoped to parent example box)
+  // until we can get iframes working to render grid examples
+
+  .gv-o-grid-row {
+    @include clearfix;
+    margin: 0 (-$gutter-half);
+  }
+
+  .gv-o-grid-item {
+    @include box-sizing(border-box);
+    @include media(tablet) {
+      float: left;
+    }
+
+    padding: 0 $gutter-half;
+  }
+
+  // Add a background to paragraphs in grid examples
+  .gv-o-grid-row p {
+    width: 100%;
+    background-image: url("../images/example--grid.png");
+    background-position: 0 0;
+    background-repeat: repeat;
+    margin-bottom: 0;
+    height: 30px;
+    @include media(tablet) {
+      height: 60px;
+    }
+    overflow: hidden;
+    text-indent: -999em;
+  }
+
+
+  @mixin grid-column($width) {
+    @include media(tablet) {
+      width: percentage($width);
+    }
+    @include ie-lte(7) {
+      width: (($site-width + $gutter) * $width) - $gutter;
+    }
+  }
+  .gv-u-full {
+    @include grid-column(1);
+  }
+
+  .gv-u-one-quarter {
+    @include grid-column(1 / 4);
+  }
+
+  .gv-u-one-half {
+    @include grid-column(1 / 2);
+  }
+
+  .gv-u-one-third {
+    @include grid-column(1 / 3);
+  }
+
+  .gv-u-two-thirds {
+    @include grid-column(2 / 3);
+  }
+
+}
+
+// Example boxes - Typography
+// ==========================================================================
+.example--typography {
+  .gv-s-prose {
+
+    h1, h2, h3, h4 {
+      color: $text-colour;
+    }
+
+    // Headings
+    h1 {
+      @include bold-48();
+
+      margin-top: em(15, 32);
+      margin-bottom: em(30, 32);
+
+      @include media(tablet) {
+        margin-top: em(30, 48);
+        margin-bottom: em(60, 48);
+      }
+    }
+
+    h2 {
+      @include bold-36();
+
+      margin-top: em(25, 24);
+      margin-bottom: em(10, 24);
+
+      @include media(tablet) {
+        margin-top: em(45, 36);
+        margin-bottom: em(20, 36);
+      }
+    }
+
+    h3 {
+      @include bold-24();
+
+      margin-top: em(25, 20);
+      margin-bottom: em(10, 20);
+
+      @include media(tablet) {
+        margin-top: em(45, 24);
+        margin-bottom: em(20, 24);
+      }
+    }
+
+    h4 {
+      @include bold-19();
+
+      margin-top: em(10, 16);
+      margin-bottom: em(5, 16);
+
+      @include media(tablet) {
+        margin-top: em(20, 19);
+      }
+
+    }
+
+    // Body copy
+    p {
+      @include core-19;
+
+      margin-bottom: 20px;
+    }
+
+    // Lede, or intro text
+    .lede {
+      @include core-24;
+    }
+
+    // Lists
+    ul,
+    ol {
+      @include core-19;
+
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    ul li,
+    ol li {
+      margin-bottom: 5px;
+    }
+
+    ul li {
+      list-style-type: disc;
+    }
+
+    ol li {
+      list-style-type: decimal;
+    }
+
+    // Link styles
+    a {
+      color: $link-colour;
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: $link-visited-colour;
+    }
+
+    a:hover {
+      color: $link-hover-colour;
+    }
+
+    a:active {
+      color: $link-colour;
+    }
+
+    // Bold text
+    strong {
+      font-weight: 700;
+    }
+
+    // Code styles
+    code {
+      color: $text-colour;
+      background-color: $highlight-colour;
+
+      text-shadow: 0 1px $page-colour;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      font-size: 14px;
+      direction: ltr;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      line-height: 1.5;
+
+      -moz-tab-size: 4;
+      -o-tab-size: 4;
+      tab-size: 4;
+
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+
+      border: 1px solid $border-colour;
+      padding: 4px 4px 2px;
+    }
+  }
+}
+

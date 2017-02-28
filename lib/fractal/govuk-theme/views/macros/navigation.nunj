@@ -22,11 +22,13 @@
             {% else %}
             {% set items = item.filter('isHidden', false).items() %}
             {% endif %}
+            {% if item.isComponent %}
             <li class="Tree-item Tree-entity data-role="item">
                 <a class="Tree-entityLink" href="/components/detail/{{ item.handle }}" data-pjax>
-                    <span><b>Introduction</b></span>
+                    <span><b>Overview</b></span>
                 </a>
             </li>
+            {% endif %}
             {{ leaves(items, root, current, (depth + 1), request) }}
             </ul>
         </li>

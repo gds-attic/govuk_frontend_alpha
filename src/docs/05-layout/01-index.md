@@ -4,7 +4,9 @@ context:
   lede: Use white space to create a visual hierarchy on the page.
 ---
 
-{{ lede }}
+<div class="lede">
+  {{ lede }}
+</div>
 
 ## Page width
 
@@ -25,10 +27,10 @@ Optimise for different screen sizes, but don’t make assumptions about what dev
 * spacing between elements is usually 5px, 10px, 15px or multiples of 15px
 * gutters are 15px for smaller screens and 30px for larger screen
 
-```
-TODO: Fix spacing examples
-```
+<div class="example example--spacing">
 
 ![alt text](http://govuk-elements.herokuapp.com/public/images/examples/15px-gutter-example.png "15px gutter example")
 
 ![alt text](http://govuk-elements.herokuapp.com/public/images/examples/30px-gutter-example.png "30px gutter example")
+
+</div>
