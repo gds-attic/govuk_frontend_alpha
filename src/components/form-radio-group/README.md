@@ -10,3 +10,16 @@
 Make it clear with words that users can select only one option.
 
 {{ '@form-radio-group--has-hint'|preview(230) }}
+
+## Arguments
+
+| Name                   | Purpose | Type | Default | Required |
+|------------------------|---------|------|---------|----------|
+| id                     |         |      |         |          |
+| name                   |         |      |         |          |
+| legend                 |         |      |         |          |
+| legendIsVisuallyHidden |         |      |         |          |
+| hint                   |         |      |         |          |
+| error                  |         |      |         |          |
+| radioGroup             |         |      |         |          |
+| value                  |         |      |         |          |
