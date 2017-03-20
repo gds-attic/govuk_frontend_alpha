@@ -11,6 +11,7 @@
 | body_start                | After opening `<body>` element                  | Insertion point
 | skip_link_message         | Text inside the skip to main content link       | Skip to main content
 | cookie_message            | Text inside the cookie message banner           | `<p>GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>`
+| header                    | Block wraps the `<header>` element              | Insertion point
 | header_class              | `<header>` element                              | Set the value of header_class to [with-proposition](https://github.com/alphagov/govuk_template/blob/master/docs/usage.md#propositional-title-and-navigation) to show the propositional navigation
 | homepage_url              | URL of anchor element wrapping logo             | https://www.gov.uk/
 | logo_link_title           | Title of anchor element wrapping logo           | Go to the GOV.UK homepage
@@ -20,6 +21,8 @@
 | after_header              | After closing `</header>` element               | Insertion point
 | phase_banner              | Before the main content `<div>`                 | Insertion point
 | content                   | Main content goes in here                       | Insertion point. Content must be wrapped with `id="content"` for the [skiplink to work](docs/usage.md#skip-link).
+| footer                    | Block wraps the `<footer>` element              | Insertion point
+| footer_class              | `<footer>` element                              | Insertion point
 | footer_top                | Inside parent `#footer-wrapper`                 | Insertion point
 | footer_support_links      | Inside parent `.footer-meta-inner`              | Insertion point
 | licence_message           | Open Government Licence text and link           | `<p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>`

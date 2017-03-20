@@ -40,6 +40,7 @@
     <div id="global-cookie-message">{% block cookie_message %}{% endblock %}</div>
 
 
+    {% block header %}
     <header role="banner" id="global-header" class="{% block header_class %}{% endblock %}">
       <div class="header-wrapper">
         <div class="header-global">
@@ -53,6 +54,7 @@
         {% block proposition_header %}{% endblock %}
       </div>
     </header>
+    {% endblock %}
 
     {% block after_header %}{% endblock %}
 
@@ -64,7 +66,9 @@
     </div>
     {% endblock %}
 
+    {% block footer %}
     <footer class="group js-footer" id="footer" role="contentinfo"></footer>
+    {% endblock %}
 
     <div id="global-app-error" class="app-error hidden"></div>
 

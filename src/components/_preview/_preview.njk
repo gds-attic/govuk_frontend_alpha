@@ -12,7 +12,8 @@
   <link media="all" rel="stylesheet" href="{{ '/stylesheets/govuk-template-print.css' | path }}">
 {% endblock %}
 
-{% block header_class %} hidden {% endblock %}
+{% block header %}
+{% endblock %}
 
 {% block after_header %}
   <style>
@@ -33,7 +34,8 @@
   {{ yield }}
 {% endblock %}
 
-{% block footer_class %} hidden {% endblock %}
+{% block footer %}
+{% endblock %}
 
 {% block scripts %}
 <!--[if gte IE 8]><!-->
