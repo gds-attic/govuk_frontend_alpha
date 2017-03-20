@@ -59,3 +59,8 @@
 
   global.GOVUK = GOVUK
 })(window)
+
+$(document).ready(function () {
+  console.log('starting modules')
+  GOVUK.modules.start()
+})

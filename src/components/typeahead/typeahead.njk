@@ -1,0 +1,8 @@
+<div class="gv-c-typeahead" data-module="typeahead">
+  <label for="{{ id }}"> {{ label }}</label>
+  <select name="{{ name }}" id="{{ id }}">
+  {% for option in options %}
+    <option value="{{ option.value }}"{% if value == option.value %} selected{% endif %}>{{ option.label }}</option>
+  {% endfor %}
+  </select>
+</div>
