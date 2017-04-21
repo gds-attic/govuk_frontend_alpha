@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/alphagov/govuk_frontend_alpha#readme",
   "dependencies": {
-    "@frctl/fractal": "^1.0.8",
+    "@frctl/fractal": "alphagov/fractal",
     "@frctl/mandelbrot": "^1.0.7",
     "@frctl/nunjucks": "^1.0.1",
     "browser-sync": "^2.18.1",
